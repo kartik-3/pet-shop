@@ -1,6 +1,15 @@
 import { Pet } from "./pet";
 import { RequestPet } from "./requestPet";
 
+let currPet: Pet[] = [],
+  currPetIndex = -1,
+  currReq: RequestPet[] = [],
+  currReqIndex = -1,
+  checkEnquiryAdded = false,
+  addPetAdded = false,
+  submitEnquiryAdded = false,
+  totalPetsAdded = false;
+
 const petName_div = document.createElement("div");
 petName_div.classList.add("form-group");
 
@@ -12,6 +21,7 @@ petName_div.appendChild(petName_label);
 const petName_field = document.createElement("input");
 petName_field.classList.add("form-control");
 petName_field.type = "text";
+petName_field.required = true;
 petName_field.name = "petName_field";
 petName_div.appendChild(petName_field);
 
@@ -26,6 +36,7 @@ petColor_div.appendChild(petColor_label);
 const petColor_field = document.createElement("input");
 petColor_field.classList.add("form-control");
 petColor_field.type = "text";
+petColor_field.required = true;
 petColor_field.name = "petColor_field";
 petColor_div.appendChild(petColor_field);
 
@@ -40,6 +51,7 @@ petAge_div.appendChild(petAge_label);
 const petAge_field = document.createElement("input");
 petAge_field.classList.add("form-control");
 petAge_field.type = "text";
+petAge_field.required = true;
 petAge_field.name = "petAge_field";
 petAge_div.appendChild(petAge_field);
 
@@ -91,15 +103,6 @@ const addPetDivRemoveChildren = () => {
   }
 );
 
-let currPet: Pet[] = [],
-  currPetIndex = -1,
-  currReq: RequestPet[] = [],
-  currReqIndex = -1,
-  checkEnquiryAdded = false,
-  addPetAdded = false,
-  submitEnquiryAdded = false,
-  totalPetsAdded = false;
-
 petSubmitBtn.addEventListener("click", () => {
   addPet();
 });
@@ -128,6 +131,7 @@ submitEnquiryDiv.appendChild(submitEnquiry_label);
 
 const submitEnquiry_field = document.createElement("input");
 submitEnquiry_field.type = "text";
+submitEnquiry_field.required = true;
 submitEnquiry_field.classList.add("form-control");
 submitEnquiry_field.name = "submitEnquiry_field";
 submitEnquiryDiv.appendChild(submitEnquiry_field);

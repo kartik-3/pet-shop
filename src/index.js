@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var pet_1 = require("./pet");
 var requestPet_1 = require("./requestPet");
+var currPet = [], currPetIndex = -1, currReq = [], currReqIndex = -1, checkEnquiryAdded = false, addPetAdded = false, submitEnquiryAdded = false, totalPetsAdded = false;
 var petName_div = document.createElement("div");
 petName_div.classList.add("form-group");
 var petName_label = document.createElement("label");
@@ -11,6 +12,7 @@ petName_div.appendChild(petName_label);
 var petName_field = document.createElement("input");
 petName_field.classList.add("form-control");
 petName_field.type = "text";
+petName_field.required = true;
 petName_field.name = "petName_field";
 petName_div.appendChild(petName_field);
 var petColor_div = document.createElement("div");
@@ -22,6 +24,7 @@ petColor_div.appendChild(petColor_label);
 var petColor_field = document.createElement("input");
 petColor_field.classList.add("form-control");
 petColor_field.type = "text";
+petColor_field.required = true;
 petColor_field.name = "petColor_field";
 petColor_div.appendChild(petColor_field);
 var petAge_div = document.createElement("div");
@@ -33,6 +36,7 @@ petAge_div.appendChild(petAge_label);
 var petAge_field = document.createElement("input");
 petAge_field.classList.add("form-control");
 petAge_field.type = "text";
+petAge_field.required = true;
 petAge_field.name = "petAge_field";
 petAge_div.appendChild(petAge_field);
 var petSubmitBtn = document.createElement("button");
@@ -60,7 +64,6 @@ document.querySelector("#addPetBtn").addEventListener("click", function () {
     checkEnquiryDivRemoveChildren();
     totalPetsDivRemoveChildren();
 });
-var currPet = [], currPetIndex = -1, currReq = [], currReqIndex = -1, checkEnquiryAdded = false, addPetAdded = false, submitEnquiryAdded = false, totalPetsAdded = false;
 petSubmitBtn.addEventListener("click", function () {
     addPet();
 });
@@ -85,6 +88,7 @@ submitEnquiry_label.innerText = "Which animal would you like adopt?";
 submitEnquiryDiv.appendChild(submitEnquiry_label);
 var submitEnquiry_field = document.createElement("input");
 submitEnquiry_field.type = "text";
+submitEnquiry_field.required = true;
 submitEnquiry_field.classList.add("form-control");
 submitEnquiry_field.name = "submitEnquiry_field";
 submitEnquiryDiv.appendChild(submitEnquiry_field);
@@ -145,7 +149,7 @@ var totalPetsDivAddChildren = function () {
     else {
         totalPetsP.innerText = "";
         for (var i = 0; i < currPet.length; i++) {
-            totalPetsP.innerHTML += "<p> " + (i + 1) + ". Pet Type - " + currPet[i].name + ", Pet Color - " + currPet[i].color + ", Pet Age - " + currPet[i].age + " </p>";
+            totalPetsP.innerHTML += "<p> " + (i + 1) + ". Animal Type - " + currPet[i].name + ", Pet Color - " + currPet[i].color + ", Pet Age - " + currPet[i].age + " </p>";
         }
     }
     document.querySelector("#totalPetsDiv").appendChild(totalPetsP);
